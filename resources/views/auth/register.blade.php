@@ -1,6 +1,7 @@
-
+@extends('layouts.app')
+@section('content')
 <h1>会員登録</h1>
-
+@include('commons.errors')
 <form action="{{ route('register') }}" method="post">
     @csrf 
     <dl class="form-list">
@@ -16,3 +17,4 @@
 <button type="submit">登録する</button>
 <a href="/">キャンセル</a>
 </form>
+@endsection()
