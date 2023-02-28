@@ -3,8 +3,10 @@
 <p><a href="{{ route('posts.create') }}">記事を書く</a></p>
 @foreach ($posts as $post)
 <article class="post-item">
-    <div class="post-title">{{ $post->title }}</div>
-    <div class="post-body">{{ $post->body }}</div>
+    <div class="post-title">
+        <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
+    </div>
+    <div class="post-info">{{ $post->created_at }}</div>
 </article>
 @endforeach
 @endsection()
