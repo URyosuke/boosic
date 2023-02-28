@@ -59,7 +59,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $data = ['post' => $post];
+        return view('posts.show',$data);
     }
 
     /**
@@ -70,7 +71,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $data = ['post' => $post];
+        return view('posts.edit',$data);
     }
 
     /**
@@ -82,7 +84,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'body' => 'required'
+        ]);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+        return redirect(route('posts.show', $post));
     }
 
     /**
