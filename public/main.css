@@ -38,3 +38,7 @@ footer {
     border-top: 1px dotted #ddd;
     border-bottom: 1px dotted #ddd;
 }
+.post-control {
+    display: flex;
+    justify-content: space-between;
+}
