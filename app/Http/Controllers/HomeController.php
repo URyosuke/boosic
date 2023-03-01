@@ -8,6 +8,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $posts = \Auth::user()->posts()->orderBy('created_at','desc')->get();
+        $data = [
+            'posts' => $posts,
+        ];
+        return view('home',$data);
     }
 }

@@ -44,6 +44,7 @@ class PostController extends Controller
             'body' => 'required'
         ]);
         $post = new Post();
+        $post->user_id = \Auth::id();
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
@@ -71,6 +72,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize($post);
         $data = ['post' => $post];
         return view('posts.edit',$data);
     }
@@ -84,6 +86,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->authorize($post);
         $this->validate($request, [
             'title' => 'required|max:255',
             'body' => 'required'
@@ -102,6 +105,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize($post);
         $post->delete();
         return redirect(route('posts.index'));
     }
