@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         $data = ['posts' => $posts];
         return view('posts.index', $data);
     }
@@ -108,5 +108,14 @@ class PostController extends Controller
         $this->authorize($post);
         $post->delete();
         return redirect(route('posts.index'));
+    }
+    
+    public function bookmark_posts()
+    {
+        $posts = \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->paginate(10);
+        $data = [
+            'posts' => $posts,
+        ];
+        return view('posts.bookmarks', $data);
     }
 }

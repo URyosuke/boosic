@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<article class="post-detail">
+<post class="post-detail">
     <h1 class="post-title">{{ $post->title }}</h1>
     <div class="post-info">{{ $post->created_at }}</div>
     <div class="post-body">{!! nl2br(e($post->body)) !!}</div>
@@ -13,5 +13,6 @@
             <button type="submit">削除</button>
         </form>
     </div>
-</article>
+    @endcan
+</post>
 @endsection
