@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/posts/api',PostController::class,'bookapi');
+
+Route::get('/posts/selectbook', [BooksController::class,'form'])->name('posts.selectbook');
+
 Route::resource('/posts', PostController::class);
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
