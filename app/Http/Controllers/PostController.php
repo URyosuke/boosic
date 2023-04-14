@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+//Clientクラスを使用する
+use GuzzleHttp\Client;
 
 class PostController extends Controller
 {
@@ -24,7 +26,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $post = new Post();
         $data = ['post' => $post];
@@ -118,4 +120,5 @@ class PostController extends Controller
         ];
         return view('posts.bookmarks', $data);
     }
+    
 }
