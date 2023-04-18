@@ -29,7 +29,10 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $post = new Post();
-        $data = ['post' => $post];
+        $data = [
+            'post' => $post,
+            'item' => $request -> item,
+        ];
         return view('posts.create',$data);
     }
 
