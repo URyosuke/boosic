@@ -35,6 +35,10 @@
                     概要：{{ $item['Item']['itemCaption']}}<br>
                 @endif
                 <br>
+                <fotm action="{{('posts.create')}}" method="post">
+                    @csrf
+                    
+                </fotm>
                 <hr>
             @endforeach
         @endif
