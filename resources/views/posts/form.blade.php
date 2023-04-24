@@ -2,27 +2,27 @@
 <dl class="form-list">
     <dt>記事タイトル</dt>
     <dd><input type="text" name="title" value="{{ old('title',$post->title) }}"></dd>
-    @if($item == null)
-        <button type="button" onclick="location.href='{{ route('posts.selectbook') }}'">本を選ぶ</button>
-    @else
-        <h2>{{ $item['Item']['title']}}</h2>
-            @if (array_key_exists('mediumImageUrl', $item['Item']))
-                <img src="{{ $item['Item']['mediumImageUrl']}}"><br>
-            @endif
-                            
-            @if (array_key_exists('author', $item['Item']))
-                著者：{{ $item['Item']['author']}}<br>
-            @endif
-            @if (array_key_exists('salesDate', $item['Item']))
-                発売年月：{{ $item['Item']['salesDate']}}<br>
-            @endif
-            <br>
-            @if (array_key_exists('itemCaption', $item['Item']))
-                概要：{{ $item['Item']['itemCaption']}}<br>
-            @endif
-            <br>
-            <hr>
+    
+    <dt>{{ $post->book_title}}</dt>
+    <input type="hidden" name="book_title" value="{{ $post->book_title}}">
+    @if (!$post->book_imag_url == null)
+        <img src="{{ $post->book_imag_url}}"><br>
+        <input type="hidden" name="book_imag_url" value="{{ $post->book_imag_url}}">
     @endif
+    @if (!$post->author == null)
+        著者：{{ $post->author}}<br>
+        <input type="hidden" name="author" value="{{ $post->author}}">
+    @endif
+    @if (!$post->publish_date == null)
+        発売日：{{ $post->publish_date}}<br>
+        <input type="hidden" name="publish_date" value="{{ $post->publish_date}}">
+    @endif
+    <br>
+    @if (!$post->book_url == null)
+        書籍URL：{{ $post->book_url}}<br>
+        <input type="hidden" name="book_url" value="{{ $post->book_url}}">
+    @endif
+    <br>
     <dt>コメント</dt>
     <dd><textarea name="body" rows="5">{{ old('body', $post->body) }}</textarea></dd>
 </dl>

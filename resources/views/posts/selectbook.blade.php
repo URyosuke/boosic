@@ -7,7 +7,7 @@
         <title>PHP/LaravelでGoogle books apiを使うサンプル</title>
     </head>
     <body>
-        <h1>書籍検索</h1>
+        <h1>本を選ぶ</h1>
         <form action="{{ route('posts.selectbook') }}" method="get">
             @csrf
             書籍名:<input type="text" name="keyword" size="50" value="{{ $keyword }}">&nbsp;<input type="submit" value="検索">
@@ -35,10 +35,14 @@
                     概要：{{ $item['Item']['itemCaption']}}<br>
                 @endif
                 <br>
-                <fotm action="{{('posts.create')}}" method="post">
-                    @csrf
-                    
-                </fotm>
+                <form action="{{ route('posts.create') }}" method="get">
+                    <input type="hidden" name="item[]" value={{ $item['Item']['title'] }}>
+                    <input type="hidden" name="item[]" value={{ $item['Item']['mediumImageUrl']}}>
+                    <input type="hidden" name="item[]" value={{ $item['Item']['author']}}>
+                    <input type="hidden" name="item[]" value={{ $item['Item']['salesDate']}}>
+                    <input type="hidden" name="item[]" value={{ $item['Item']['itemUrl']}}>
+                    <input type="submit" value="選択">
+                </form>
                 <hr>
             @endforeach
         @endif

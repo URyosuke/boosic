@@ -28,11 +28,15 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->item);
         $post = new Post();
-        $data = [
-            'post' => $post,
-            'item' => $request -> item,
-        ];
+        $post->book_title = $request->item[0];
+        $post->book_imag_url = $request->item[1];
+        $post->author = $request->item[2];
+        $post->publish_date = $request->item[3];
+        $post->book_url = $request->item[4];
+        
+        $data = ['post' => $post];
         return view('posts.create',$data);
     }
 
@@ -42,16 +46,22 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $this->validate($request, [
             'title' => 'required|max:255',
             'body' => 'required'
         ]);
-        $post = new Post();
+        
         $post->user_id = \Auth::id();
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->book_title = $request->book_title;
+        $post->book_imag_url = $request->book_imag_url;
+        $post->author = $request->author;
+        $post->publish_date = $request->publish_date;
+        $post->book_url = $request->book_url;
+        // dd($post);
         $post->save();
 
         return redirect(route('posts.index'));

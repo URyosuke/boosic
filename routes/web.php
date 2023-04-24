@@ -21,9 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/posts/api',PostController::class,'bookapi');
-
 Route::get('/posts/selectbook', [BooksController::class,'form'])->name('posts.selectbook');
+Route::get('/posts/create', [PostController::class,'create'])->name('posts.create');
 
 Route::resource('/posts', PostController::class);
 
