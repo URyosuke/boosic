@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\MusicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/posts/selectbook', [BooksController::class,'form'])->name('posts.selectbook');
+Route::get('/posts/selectmusic',[MusicController::class,'form'])->name('posts.selectmusic');
 Route::get('/posts/create', [PostController::class,'create'])->name('posts.create');
 
 Route::resource('/posts', PostController::class);
