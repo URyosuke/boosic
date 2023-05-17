@@ -23,6 +23,20 @@
         <input type="hidden" name="book_url" value="{{ $post->book_url}}">
     @endif
     <br>
+    <dt>マイ主題歌</d>
+    @if (!$post->music_imag == null)
+        <img src="{{ $post->music_imag}}"><br>
+        <input type="hidden" name="music_imag" value="{{ $post->music_imag}}">
+    @endif
+    @if (!$post->author == null)
+        アーティスト：{{ $post->music_artist}}<br>
+        <input type="hidden" name="music_artist" value="{{ $post->music_artist}}">
+    @endif
+    @if (!$post->music_title == null)
+        曲名：{{ $post->music_title}}<br>
+        <input type="hidden" name="music_title" value="{{ $post->music_title}}">
+    @endif
+    <br>
     <dt>コメント</dt>
-    <dd><textarea name="body" rows="5">{{ old('body', $post->body) }}</textarea></dd>
+    <dd><textarea name="body" rows="5" cols="10">{{ old('body', $post->body) }}</textarea></dd>
 </dl>
