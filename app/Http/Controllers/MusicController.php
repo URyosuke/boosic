@@ -3,22 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Spotify;
 
 class MusicController extends Controller
 {
     public function form(Request $request)
     {
-        require_once(__DIR__.'/../../../vendor/autoload.php');
-        $session = new SpotifyWebAPI\Session(
-            '55ec22eb76d34ac6aa01fb62e16f32a3',
-            '09f3ead60cb349a68eaa49223ed81582'
-        );
-        $api = new SpotifyWebAPI\SpotifyWebAPI();
-        $session->requestCredentialsToken();
-        $accessToken = $session->getAccessToken();
-        $api->setAccessToken($accessToken);
-
-        $result = $api->search('ヨルシカ', 'artist');
-        dd($result);
+        $data = [];
+        $Items = null;
+        
+        if(!empty($request->keyword))
+        {
+            $Items = Spotify::searchItems($request->keyword, 'track')->get();
+            // dd($Items["tracks"]["items"][0]);
+        }
+        
+        $data = [
+            'book_title' => $request->item[0],
+            'book_imag_url' => $request->item[1],
+            'author' => $request->item[2],
+            'publish_date' => $request->item[3],
+            'book_url' => $request->item[4],
+            'Items' => $Items,
+            'keyword' => $request->keyword,
+        ];
+        // dd($data['items']);
+        return view('posts.selectmusic', $data);
+        // dd($item);
     }
+    
 }

@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::get('/posts/selectbook', [BooksController::class,'form'])->name('posts.selectbook');
 Route::get('/posts/selectmusic',[MusicController::class,'form'])->name('posts.selectmusic');
+Route::get('posts/searchmusic',[MusicController::class,'search'])->name('posts.searchmusic');
 Route::get('/posts/create', [PostController::class,'create'])->name('posts.create');
 
 Route::resource('/posts', PostController::class);

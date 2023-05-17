@@ -35,13 +35,14 @@
                     概要：{{ $item['Item']['itemCaption']}}<br>
                 @endif
                 <br>
-                <form action="{{ route('posts.create') }}" method="get">
-                    <input type="hidden" name="item[]" value={{ $item['Item']['title'] }}>
+                <form action="{{ route('posts.selectmusic') }}" method="get">
+                    @csrf
+                    <input type="hidden" name="item[]" value={{ $item['Item']['title']}}>
                     <input type="hidden" name="item[]" value={{ $item['Item']['mediumImageUrl']}}>
                     <input type="hidden" name="item[]" value={{ $item['Item']['author']}}>
                     <input type="hidden" name="item[]" value={{ $item['Item']['salesDate']}}>
                     <input type="hidden" name="item[]" value={{ $item['Item']['itemUrl']}}>
-                    <input type="submit" value="選択">
+                    <input type="submit" value="主題歌を選ぶ">
                 </form>
                 <hr>
             @endforeach

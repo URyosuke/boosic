@@ -35,7 +35,10 @@ class PostController extends Controller
         $post->author = $request->item[2];
         $post->publish_date = $request->item[3];
         $post->book_url = $request->item[4];
-        
+        $post->music_title = $request->item[5];
+        $post->music_imag = $request->item[6];
+        $post->music_artist = $request->item[7];
+        $post->music_url = $request->item[8];
         $data = ['post' => $post];
         return view('posts.create',$data);
     }
@@ -61,6 +64,10 @@ class PostController extends Controller
         $post->author = $request->author;
         $post->publish_date = $request->publish_date;
         $post->book_url = $request->book_url;
+        $post->music_title = $request->music_title;
+        $post->music_imag = $request->music_imag;
+        $post->music_artist = $request->music_artist;
+        $post->music_url = $request->music_url;
         // dd($post);
         $post->save();
 
