@@ -1,80 +1,189 @@
+
 body {
     margin: 0;  
 }
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    background: #4470b1;
+    
     color: rgba(255, 255, 255, .7);
 }
+
 .site-title {
+    
     font-size: 1.3rem;
 }
+
 .container {
     padding: 0 20px;
 }
+
 .post-item {
     padding: 20px 0;
     border-bottom: 1px solid #ddd;
 }
+
 .post-title {
     margin-bottom: 10px;
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+.bg-black {
+    background-color: rgba(0,0,0,0.5);
+}
+
 footer {
     padding: 20px;
     text-align: center;
     font-size: .9rem;
     color: #777;
 }
+
+img{
+    text-align: center;
+    display: block;
+}
+
 .post-info {
     font-size: .8rem;
     color: #777;
 }
+
 .post-body {
     margin: 1rem 0;
     padding: 1rem 0;
     border-top: 1px dotted #ddd;
     border-bottom: 1px dotted #ddd;
 }
+
 .post-control {
     display: flex;
     justify-content: space-between;
 }
+
 button, .btn {
     display: inline-block;
     padding: 2px 8px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    /*border: 1px solid rgba(0, 0, 0, 0.2);*/
     border-radius: 4px;
     background: #eee;
     color: #333;
     font-size: .9rem;
     cursor: pointer;
 }
-button:hover, .btn:hover {
-    background: #ddd;
+
+/*button:hover, .btn:hover {*/
+/*    background: rgba(0, 0, 0, .3);*/
+/*}*/
+
+#header{
+	position: relative;/*背景を設定するdivの基点とするためrelativeをかける*/
+	width: 100%;
+	height:100vh;
+ 	overflow: hidden;/*はみ出しているところを隠す*/
 }
-header nav ul {
-    display: flex;
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
+
+#header-img{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80') no-repeat top center;
+    background-size: cover;
+    transform-origin: center;
 }
-header nav ul li {
-    margin: 0 10px;
-}
-header nav ul li a.active {
+
+.header-area {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
     color: #fff;
+    text-align: center;
 }
+
+#header h1{
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  /*天地中央に配置*/
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;/*#header-imgよりも手前に配置*/
+}
+
+#header h2{
+    position: relative;
+    z-index: 2;
+}
+
 .welcome {
     margin: 30px auto;
     padding: 30px;
     border-radius: 6px;
-    background: #34495e;
     text-align: center;
     color: #fff;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 9999;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.hide_area{
+    position: relative;
+    top: -200px;
+    transition: top 0.5;
+}
+
+.area_x{
+    position: fixed;
+    top: 0.5rem;
+    right: 1.2rem;
+}
+
+#mainContainer,
+#footer{
+	position: relative;/*#header-imgよりも配置を上にするためにrelativeをつける*/
+	z-index: 2/*#header-imgよりもz-indexの値を大きな数値にして上に表示*/
+}
+
+.fadeDown{
+    top: 0px !important;
+    transition: top 0.5s;
+}
+
+.eachTextAnime span{opacity: 0;}
+.eachTextAnime.appeartext span{ animation:text_anime_on 1s ease-out forwards; }
+@keyframes text_anime_on {
+	0% {opacity:0;}
+	100% {opacity:1;}
+}
+
+
+@keyframes fadeDownAnime{
+  from {
+    opacity: 0;
+  transform: translateY(-100px);
+  }
+
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
 }
