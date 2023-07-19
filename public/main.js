@@ -48,17 +48,22 @@ $(window).scroll(function() {
         });
     });
 
-const humButton = document.querySelector('#humberger');
+const appHumButton = document.querySelector('#apphumberger');
 const humList = document.querySelector('#humbergerList');
 const navID = document.querySelector('#navID');
 const bars = document.querySelector('#bars');
 const xmark = document.querySelector('#xmark');
 
-humButton.addEventListener('click',function(e){
+appHumButton.addEventListener('click',function(e){
   xmark.classList.toggle('hide_area');
   xmark.classList.toggle('area_x');
   bars.classList.toggle('hide_area');
+  bars.classList.toggle('area_x');
   humList.classList.toggle('fadeDown');
-  navID.classList.toggle('bg-black');
+  humList.classList.toggle('z-20');
+  humList.classList.toggle('bg-black');
+  humList.classList.toggle('fixed');
+  humList.classList.toggle('text-gray-700');
+  humList.classList.toggle('text-white');
 });
 

@@ -8,7 +8,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.15);*/
     
     color: rgba(255, 255, 255, .7);
 }
@@ -146,11 +146,14 @@ button, .btn {
 }
 
 .hide_area{
-    position: relative;
-    top: -200px;
+    position: sticky;
+    top: -220px;
     transition: top 0.5;
 }
 
+.hidez{
+    z-index:-1;
+}
 .area_x{
     position: fixed;
     top: 0.5rem;
@@ -164,8 +167,12 @@ button, .btn {
 }
 
 .fadeDown{
-    top: 0px !important;
-    transition: top 0.5s;
+    top: 44px !important;
+    transition-duration: 0.3s;
+}
+
+.humbergerML{
+    margin-left: 500rem;
 }
 
 .eachTextAnime span{opacity: 0;}
