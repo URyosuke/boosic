@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = \Auth::user()->posts()->orderBy('created_at','desc')->paginate(10);
+        $posts = \Auth::user()->posts()->orderBy('created_at','desc')->paginate(5);
         $data = [
             'posts' => $posts,
         ];
