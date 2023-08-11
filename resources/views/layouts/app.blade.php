@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>BOOSIC-好きな小説のマイ主題歌を共有するSNS-</title>
     <link href="{{ asset('output.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/main.css">
@@ -22,7 +23,7 @@
     <div id="humbergerList"  class="hide_area w-full transition duration-500 text-gray-700 hidez" id="navbar-hamburger">
         <ul class="flex flex-col font-medium bg-opacity-50 dark:bg-gray-800 dark:border-gray-700 transition ease-linear ml-3">
             @if (Auth::check())
-                <li class="p-2"><a class="tab-item{{ Request::is('home') ? ' active' : ''}}" href="{{ route('home') }}">マイページ</a></li>
+                <li class="p-2"><a class="tab-item{{ Request::is('home') ? ' active' : ''}}" href="{{ route('home', ['userid' => Auth::id()]) }}">マイページ</a></li>
                 <li class="p-2"><a class="tab-item{{ Request::is('posts') ? ' active' : ''}}" href="{{ route('posts.index') }}">記事一覧</a></li>
                 <li class="p-2"><a class="tab-item{{ Request::is('bookmarks') ? ' active' : ''}}" href="{{ route('bookmarks') }}">お気に入り</a></li>
                 <li class="p-2"><a href="{{ route('posts.selectbook') }}">記事作成</a></li>
@@ -44,6 +45,9 @@
 
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="app.js"></script>
+    <script src='../app.js'></script>
+    <script src="../show.js"></script>
 </body>
 </html>

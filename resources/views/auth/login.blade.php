@@ -6,7 +6,7 @@
     <div class="container flex items-center justify-center flex-1 h-full mx-auto">
         <div class="w-full max-w-lg z-10">
             <div class="leading-loose">
-                <form action="{{ route('login') }}" method="post" class="max-w-sm p-10 m-auto rounded shadow-xl bg-white/25">
+                <form action="{{ route('login',Auth::id()) }}" method="post" class="max-w-sm p-10 m-auto rounded shadow-xl bg-white/25">
                     @csrf
                     <p class="mb-8 text-2xl font-light text-center text-white">
                         ログイン

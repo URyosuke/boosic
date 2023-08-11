@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 //Clientクラスを使用する
 use GuzzleHttp\Client;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -139,6 +140,16 @@ class PostController extends Controller
             'posts' => $posts,
         ];
         return view('posts.bookmarks', $data);
+    }
+    
+    public function bookmark_others_posts($userid)
+    {
+        $posts = User::find($userid)->bookmark_posts()->orderBy('created_at', 'desc')->paginate(10);
+        $data = [
+            'user' => User::find($userid),
+            'posts' => $posts,
+        ];
+        return view('posts.othersbookmarks', $data);
     }
     
 }
