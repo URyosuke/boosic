@@ -38,7 +38,7 @@
                 <form action="{{ route('posts.selectmusic') }}" method="get">
                     @csrf
                     <input type="hidden" name="item[]" value={{ $item['Item']['title']}}>
-                    <input type="hidden" name="item[]" value={{ $item['Item']['mediumImageUrl']}}>
+                    <input type="hidden" name="item[]" value={{ $item['Item']['largeImageUrl']}}>
                     <input type="hidden" name="item[]" value={{ $item['Item']['author']}}>
                     <input type="hidden" name="item[]" value={{ $item['Item']['salesDate']}}>
                     <input type="hidden" name="item[]" value={{ $item['Item']['itemUrl']}}>

@@ -1,8 +1,8 @@
 <div class="mx-auto px-4 md:px-12">
-    <div class="flex justify-center flex-wrap -mx-1 lg:-mx-4">
+    <div class="flex justify-center flex-wrap flex-col items-center -mx-1 lg:-mx-4">
         @foreach ($posts as $post)
         <!-- Column -->
-        <div class="flex justify-center my-1 px-1 w-full max-w-5xl">
+        <div class="flex justify-center my-1 px-1 w-full max-w-3xl">
             <!-- Article -->
             <article class="overflow-hidden rounded-lg shadow-lg bg-gray-400 container">
                 <header class="flex items-center justify-between leading-tight p-2 md:p-4">
@@ -43,7 +43,7 @@
                 </div>
                 <hr class="h-px bg-gray-500 border-0">
                 <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                    <a class="flex items-center no-underline hover:underline text-black" href="{{ route('posthome', $post->user->id) }}">
                         <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
                         <p class="ml-2 text-sm">
                             {{ $post->user->name }}

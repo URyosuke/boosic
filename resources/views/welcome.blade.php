@@ -22,7 +22,7 @@
     <div id="humbergerList"  class="hide_area w-full transition duration-500" id="navbar-hamburger">
         <ul class="flex flex-col font-medium bg-opacity-50 dark:bg-gray-800 dark:border-gray-700 text-white transition ease-linear ml-3 transition duration-500">
             @if (Auth::check())
-                <li class="p-2"><a class="tab-item{{ Request::is('home') ? ' active' : ''}}" href="{{ route('home') }}">マイページ</a></li>
+                <li class="p-2"><a class="tab-item{{ Request::is('home') ? ' active' : ''}}" href="{{ route('home',['userid' => Auth::id()]) }}">マイページ</a></li>
                 <li class="p-2"><a class="tab-item{{ Request::is('posts') ? ' active' : ''}}" href="{{ route('posts.index') }}">記事一覧</a></li>
                 <li class="p-2"><a class="tab-item{{ Request::is('bookmarks') ? ' active' : ''}}" href="{{ route('bookmarks') }}">ブックマーク</a></li>
                 <li class="p-2">

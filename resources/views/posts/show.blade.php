@@ -1,35 +1,110 @@
 @extends('layouts.app')
 @section('content')
-<post class="post-detail">
-    <h1 class="post-title">タイトル：{{ $post->title }}</h1>
-    <div class="post-info">{{ $post->created_at }}</div>
-    <hr>
-    <dt>{{ $post->book_title}}</dt>
-    @if (!$post->book_imag_url == null)
-        <img src="{{ $post->book_imag_url}}"><br>
-    @endif
-    @if (!$post->author == null)
-        著者：{{ $post->author}}<br>
-    @endif
-    @if (!$post->publish_date == null)
-        発売日：{{ $post->publish_date}}<br>
-    @endif
-    <br>
-    @if (!$post->book_url == null)
-        書籍URL：{{ $post->book_url}}<br>
-    @endif
-    <hr>
-    <h1 class="post-title">コメント</h1>
-    <div class="post-body">{!! nl2br(e($post->body)) !!}</div>
-    @can('update',$post)
-    <div class="post-control">
-        <a href="{{route('posts.edit',$post)}}">編集</a>
-        <form onsubmit="return confirm('本当に削除しますか？')" action="{{ route('posts.destroy', $post) }}" method="post">
-            @csrf
-            @method('delete')
-            <button type="submit">削除</button>
-        </form>
-    </div>
-    @endcan
-</post>
+<div class="flex justify-center text-black">
+    <!-- Column -->
+        <div class="flex flex-col justify-center my-1 px-1 max-w-5xl">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg shadow-lg bg-gray-400 container">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black font-black text-2xl" href="{{ route('posts.show', $post) }}">
+                            {{ $post->title }}
+                        </a>
+                    </h1>
+                    <p class="text-grey-darker text-sm">
+                        {{ $post->created_at }}
+                    </p>
+                </header>
+                <hr class="h-px bg-gray-500 border-0">
+                <div id="articleContent" class="grid grid-cols-3 pb-2">
+                    <a href="{{ route('posts.show', $post) }}" class="flex justify-center col-span-1 mt-2">
+                        <img alt="Placeholder" class="pl-4 block w-96 left-1/2" src="{{ $post->book_imag_url}}">
+                    </a>
+                    <div class="top-1/2 col-span-2 text-black pl-5">
+                        <div id="detail" class="grid grid-cols-2 pt-8 px-4 text-center">
+                            <div id="detailContents" class="flex text-left justify-center flex-col col-span-1 text-lg font-bold w-fit mx-auto">
+                                <div class="text-left mb-5">
+                                    @if (!$post->author == null)
+                                        <div>
+                                            <span class="w-20 mr-5 bg-gray-700 text-white text-base text-center items-center shadow-md inline-block">著者</span>
+                                            <span class="text-base">{{ $post->author}}</span>
+                                        </div>
+                                    @endif
+                                    @if (!$post->publish_date == null)
+                                        <div>
+                                            <span class="w-20 mr-5 bg-gray-700 text-white text-base text-center shadow-md inline-block">
+                                                発売日
+                                            </span>
+                                            <span class="text-base">
+                                                {{ $post->publish_date}}
+                                            </span>
+                                        </div>
+                                    @endif
+                                    @if (!$post->book_url == null)
+                                        <div>
+                                            <span class="w-20 mr-5 bg-gray-700 text-white text-base text-center shadow-md inline-block">
+                                                詳細
+                                            </span>
+                                            <span>
+                                                <a class="hover:text-sky-700 text-base" href="{{ $post->book_url}}" target="_blank" rel="noopener noreferrer">書籍詳細情報</a>
+                                            </span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-span-1 text-lg font-bold">
+                                マイ主題歌
+                                <div>
+                                    <img class="rounded-full inline-block" src="{{ $post->music_imag }}">
+                                </div>
+                                <div>
+                                    {{ $post->music_title }}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="articleComment" class="text-lg font-bold col-span-3 text-black mt-8">
+                            コメント
+                            <div class="mt-2 h-48 w-full bg-gray-200 text-base rounded-lg">
+                                {{ $post->body }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="h-px bg-gray-500 border-0">
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="{{ route('posthome', $post->user->id) }}">
+                        <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                        <p class="ml-2 text-sm">
+                            {{ $post->user->name }}
+                        </p>
+                    </a>
+                    <div class="post-control">
+                        @if (!Auth::user()->is_bookmark($post->id))
+                        <form action="{{ route('bookmark.store', $post) }}" method="post">
+                            @csrf
+                            <button>お気に入り登録</button>
+                        </form>
+                        @else
+                        <form action="{{ route('bookmark.destroy', $post) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button>お気に入り解除</button>
+                        </form>
+                        @endif
+                    </div>
+                </footer>
+            </article>
+            <!-- END Article -->
+            <div class="flex text-white p-4">
+                <a class="pr-4" href="{{route('posts.edit',$post)}}">編集</a>
+                <form onsubmit="return confirm('本当に削除しますか？')" action="{{ route('posts.destroy', $post) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit text-white bg-gray-700">削除</button>
+                </form>
+            </div>
+        </div>
+    <!-- END Column -->
+
+</div>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/posts/create', [PostController::class,'create'])->name('posts.creat
 
 Route::resource('/posts', PostController::class);
 
+Route::get('/home/{id}', [HomeController::class, 'indexx'])->name('posthome');
+Route::get('bookmarks/{id}', [PostController::class,'bookmark_others_posts'])->name('othersbookmarks');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -36,4 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/posts/{post}/bookmark', [BookmarkController::class, 'store'])->name('bookmark.store');
     Route::delete('/posts/{post}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
     Route::get('/bookmarks', [PostController::class, 'bookmark_posts'])->name('bookmarks');
+});
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::post('/follow/{userId}', [FollowController::class, 'store']);
 });

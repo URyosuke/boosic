@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->bookmarks()->where('post_id', $postId)->exists();
     }
+    
+    public function follows()
+    {
+        return $this->belongsToMany('app\Models\User','follows','user_id','followed_user_id');
+    }
 }
