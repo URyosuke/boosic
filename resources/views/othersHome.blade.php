@@ -11,11 +11,16 @@
             </div>
         </div>
         <div class="buttons flex absolute font-bold right-0 text-xs text-gray-500 space-x-0 my-3.5 mr-3">
-            <button onclick="follow({{$user->id}})"class="bg-white add border rounded-l-2xl rounded-r-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">フォロー</button>
+            @if (!Auth::user()->is_follow($user->id))
+                <button id='followButton' onclick="follow({{$user->id}})"class="bg-white add border rounded-l-2xl rounded-r-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">フォロー</button>
+            @else
+                <button id='followButton' onclick="follow({{$user->id}})"class="bg-gray-400 add border rounded-l-2xl rounded-r-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">フォロー中</button>
+            @endif
             <!-- <div class="add border rounded-r-2xl rounded-l-sm border-gray-300 p-1 px-4 cursor-pointer hover:bg-gray-700 hover:text-white">Bio</div> -->
         </div>
         <div class="flex absolute font-bold right-0 bottom-0 text-base text-white space-x-0 my-3.5 mr-3">
-            <div>6フォロワー　7フォロー</div>
+            <span id="followerNum" class="px-4">フォロワー {{ Auth::user()->howManyFollowers($user->id) }}</span>
+            <span id="followNum"> フォロー {{ Auth::user()->howManyFollow($user->id) }}</span>
         </div>
     </div>
 </div>

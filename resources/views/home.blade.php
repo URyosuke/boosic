@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('commons.errors')
-<div class="mx-4 flex justify-center">
+<div class="mx-4 flex justify-center font-serif">
     <div class="flex justify-center w-full border max-w-3xl hover:shadow-none relative shadow-lg bg-gray-400">
         <img class="max-h-20 w-full opacity-80 absolute top-0" style="z-index:-1" src="https://unsplash.com/photos/h0Vxgz5tyXA/download?force=true&w=640" alt="" />
         <div class="profile w-full m-3 ml-4 text-black">
@@ -9,7 +9,9 @@
             <div class="title ml-3 font-bold name break-words">{{ Auth::user()->name }}</div>
         </div>
         <div class="flex absolute font-bold right-0 bottom-0 text-base text-white space-x-0 my-3.5 mr-3">
-            <div>6フォロワー　7フォロー</div>
+            <span id="followerNum" class="px-4">フォロワー {{ Auth::user()->howManyFollowers(Auth::user()->id) }}</span>
+            <span id="followNum"> フォロー {{ Auth::user()->howManyFollow(Auth::user()->id) }}</span>
+        </div>
         </div>
     </div>
 </div>

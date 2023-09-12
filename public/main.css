@@ -147,7 +147,7 @@ button, .btn {
 
 .hide_area{
     position: sticky;
-    top: -220px;
+    left: -1520px;
     transition: top 0.5;
 }
 
@@ -193,4 +193,14 @@ button, .btn {
     opacity: 1;
   transform: translateY(0);
   }
+}
+
+.fa-heart-solid {
+  color: red;
+  cursor: pointer;
+}
+
+.fa-regular {
+  color: black;
+  cursor: pointer;
 }
