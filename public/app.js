@@ -3,6 +3,7 @@ const humList = document.querySelector('#humbergerList');
 const navID = document.querySelector('#navID');
 const bars = document.querySelector('#bars');
 const xmark = document.querySelector('#xmark');
+const followButton = document.querySelector('#followButton');
 
 appHumButton.addEventListener('click',function(e){
   xmark.classList.toggle('hide_area');
@@ -55,8 +56,41 @@ function follow(userId) {
         })
           .done((data) => {
             console.log(data);
+            if(data == 'follow'){
+              followButton.textContent="フォロー中"
+              const followerNum = document.querySelector('#followerNum');
+              followerNum.textContent=`フォロワー${data}`;
+            }else{
+              followButton.textContent="フォロー"
+              const followerNum = document.querySelector('#followerNum');
+              followerNum.textContent=`フォロワー${data}`;
+            }
+            followButton.classList.toggle('bg-gray-400');
+            followButton.classList.toggle('bg-white');
           })
           .fail((data) => {
             console.log(data);
           });
-      }
+}
+
+function like(postId) {
+  $.ajax({
+    headers: {"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
+    url: `/like/${postId}`,
+    type: "POST",
+  })
+    .done(function (data, status, xhr) {
+      console.log(data);
+      const heart = document.querySelector(`#heart${postId}`);
+      const heartsNum = document.querySelector(`#heartsNum${postId}`)
+      
+      heart.classList.toggle('fa-solid');
+      heart.classList.toggle('fa-heart-solid');
+      heart.classList.toggle('fa-regular');
+      heartsNum.textContent=data;
+    })
+    .fail(function (xhr, status, error) {
+      console.log();
+    });
+}
+  

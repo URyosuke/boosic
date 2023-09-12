@@ -63,8 +63,51 @@ class User extends Authenticatable
         return $this->bookmarks()->where('post_id', $postId)->exists();
     }
     
+    public function howManyBookmarks($postId)
+    {
+        return $this->bookmark_posts()->where('post_id', $postId)->count();
+    }
+    
     public function follows()
     {
-        return $this->belongsToMany('app\Models\User','follows','user_id','followed_user_id');
+        return $this->belongsToMany($this,'follows','user_id','followed_user_id');
     }
+    
+    public function is_follow($userId)
+    {
+        // dd($this->follows()->where('followed_user_id', $userId)->exists());
+        return $this->follows()->where('followed_user_id', $userId)->exists();
+    }
+    
+    public function howManyFollowers($userId)
+    {
+        // dd($this->follows()->count());
+        return $this->follows()->where('followed_user_id', $userId)->count();
+    }
+    
+    public function howManyFollow($userId)
+    {
+        return $this->follows()->where('user_id', $userId)->count();
+    }
+    
+    public function followUsers()
+    {
+        return $this->belongsToMany(
+            'App\Models\User',
+            'follow_users',
+            'followed_user_id',
+            'following_user_id'
+        );
+    }
+    
+    public function follow()
+    {
+        return $this->belongsToMany(
+            'App\Models\User',
+            'follow_users',
+            'following_user_id',
+            'followed_user_id'
+        );
+    }
+   
 }

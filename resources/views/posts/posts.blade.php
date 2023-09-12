@@ -1,6 +1,6 @@
 <div class="mx-auto px-4 md:px-12">
     <div class="flex justify-center flex-wrap flex-col items-center -mx-1 lg:-mx-4">
-        @foreach ($posts as $post)
+        @foreach ($posts as $index => $post)
         <!-- Column -->
         <div class="flex justify-center my-1 px-1 w-full max-w-3xl">
             <!-- Article -->
@@ -51,16 +51,15 @@
                     </a>
                     <div class="post-control">
                         @if (!Auth::user()->is_bookmark($post->id))
-                        <form action="{{ route('bookmark.store', $post) }}" method="post">
-                            @csrf
-                            <button>お気に入り登録</button>
-                        </form>
+                            <button onclick="like({{$post->id}})" class="bg-gray-400">
+                                <span><i id="heart{{$post->id}}" class="fa-regular fa-heart fa-xl" aria-hidden="true"></i> </span>
+                                <span id="heartsNum{{ $post->id }}">{{ Auth::user()->howManyBookmarks($post->id) }}</span>
+                            </button>
                         @else
-                        <form action="{{ route('bookmark.destroy', $post) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button>お気に入り解除</button>
-                        </form>
+                            <button onclick="like({{$post->id}})" class="bg-gray-400">
+                                <span><i id="heart{{$post->id}}" class="fa-heart fa-xl fa-solid fa-heart-solid" aria-hidden="true"></i> </span>
+                                <span id="heartsNum{{ $post->id }}">{{ Auth::user()->howManyBookmarks($post->id) }}</span>
+                            </button>
                         @endif
                     </div>
                 </footer>

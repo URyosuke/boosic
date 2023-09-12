@@ -37,6 +37,7 @@ class PostController extends Controller
         $post->publish_date = $request->item[3];
         $post->book_url = $request->item[4];
         $post->music_title = $request->item[5];
+        // dd($request->item[7]);
         $post->music_imag = $request->item[6];
         $post->music_artist = $request->item[7];
         $post->music_url = $request->item[8];

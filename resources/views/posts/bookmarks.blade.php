@@ -8,10 +8,14 @@
             <img class="w-28 h-28 p-1 bg-white rounded-full" src="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb" alt=""/>
             <div class="title ml-3 font-bold name break-words">{{ Auth::user()->name }}</div>
         </div>
+        <div class="flex absolute font-bold right-0 bottom-0 text-base text-white space-x-0 my-3.5 mr-3">
+            <span id="followerNum" class="px-4">フォロワー {{ Auth::user()->howManyFollowers(Auth::user()->id) }}</span>
+            <span id="followNum"> フォロー {{ Auth::user()->howManyFollow(Auth::user()->id) }}</span>
+        </div>
     </div>
 </div>
 <div class="px-14 flex justify-center">
-    <ul class="flex flex-wrap justify-center text-sm font-medium text-center text-gray-500 dark:text-gray-400 grid grid-cols-2 px-16 py-4 max-w-5xl w-full">
+    <ul class="flex flex-wrap justify-center text-sm font-medium text-center text-gray-500 dark:text-gray-400 grid grid-cols-2 py-4 max-w-3xl w-full">
         <li class="flex justify-center nav-item col-span-1  border-b-2 border-white">
             <a href="{{ route('posthome',Auth::user()->id) }}" class="nav-link inline-block text-gray-400 active text-xl py-3">
                 投稿

@@ -42,5 +42,11 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::post('/follow/{userId}', [FollowController::class, 'store']);
+    Route::post('/user/{user}/follow', [FollowController::class,'follow_do'])->name('follow');
+    Route::get('/user/{user}/follow_check', [FollowController::class,'follow_check'])->name('follow_check');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/follow/{userId}', [ FollowController::class, 'store']);
+    Route::post('/like/{postId}',[BookmarkController::class,'store']);
 });
