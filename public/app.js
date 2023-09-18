@@ -93,4 +93,24 @@ function like(postId) {
       console.log();
     });
 }
+
+$(function () {
+  $('#openModal').click(function(){
+      $('#modalArea').fadeIn();
+  });
+  $('#closeModal , #modalBg').click(function(){
+    $('#modalArea').fadeOut();
+  });
+});
+
+function previewImage(obj)
+  {
+    console.log(obj)
+    var fileReader = new FileReader();
+    fileReader.onload = (function() {
+      console.log(fileReader.result)
+      document.querySelector('#preview').src = fileReader.result;
+    });
+    fileReader.readAsDataURL(obj.files[0]);
+  }
   
