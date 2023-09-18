@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" rel="stylesheet">
 </head>
-<body class="h-full bg-gray-700 text-white font-serif">
+<body class="bg-gray-700 text-white font-serif">
     <section class="flex justify-between bg-black z-20 fixed">
         <a href="/" class="items-center">
             <span class="self-center text-2xl font-semibold whitespace-nowrap text-white ml-3">BOOSIC</span>

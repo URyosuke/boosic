@@ -7,6 +7,7 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/follow/{userId}', [ FollowController::class, 'store']);
     Route::post('/like/{postId}',[BookmarkController::class,'store']);
 });
+
+Route::get('/test', function() {
+    return view('posts/test');
+});
+
+Route::post('/upload/{user}', [UserController::class,'store'])->name('profile.store');

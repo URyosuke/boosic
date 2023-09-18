@@ -5,7 +5,15 @@
     <div class="flex justify-center w-full border max-w-3xl hover:shadow-none relative shadow-lg bg-gray-400">
         <img class="max-h-20 w-full opacity-80 absolute top-0" style="z-index:-1" src="https://unsplash.com/photos/h0Vxgz5tyXA/download?force=true&w=640" alt="" />
         <div class="profile w-full m-3 ml-4 text-black">
-            <img class="w-28 h-28 p-1 bg-white rounded-full" src="https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb" alt=""/>
+            
+            
+            
+            @if($user->image == null)
+                <img id="preview" class="m-xauto w-28 h-28 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
+            @else
+                <img id="preview" class="mx-auto w-28 h-28 p-1 rounded-full" src="{{ asset(Auth::user()->image) }}" alt=""/>
+            @endif
+            
             <div class="title ml-3 font-bold flex flex-col">
                 <div class="name break-words">{{ $user->name }}</div>
             </div>

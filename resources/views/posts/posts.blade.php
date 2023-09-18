@@ -44,7 +44,16 @@
                 <hr class="h-px bg-gray-500 border-0">
                 <footer class="flex items-center justify-between leading-none p-2 md:p-4">
                     <a class="flex items-center no-underline hover:underline text-black" href="{{ route('posthome', $post->user->id) }}">
-                        <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                        
+                        
+                        <!--<img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">-->
+                        @if($post->user->image == null)
+                            <img id="preview" class="m-xauto w-12 h-12 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
+                        @else
+                            <img id="preview" class="mx-auto w-12 h-12 p-1 rounded-full" src="{{ asset(Auth::user()->image) }}" alt=""/>
+                        @endif
+                        
+                        
                         <p class="ml-2 text-sm">
                             {{ $post->user->name }}
                         </p>
