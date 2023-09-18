@@ -35,12 +35,12 @@
         @if ($Items == null)
             
         @else (count($Items["tracks"]["items"]) > 0)
-            <div class="overflow-auto h-1/2 m-6 rounded-lg p-6 bg-white text-black max-w-xs sm:max-w-s md:max-w-3xl lg:max-w-4xl mx-auto">
+            <div class="overflow-auto h-96 m-6 rounded-lg p-6 bg-white text-black max-w-xs sm:max-w-s md:max-w-3xl lg:max-w-4xl mx-auto">
                 @foreach ($Items["tracks"]["items"] as $item)
                 <div>
                     <div class="flex items-center space-x-6 mt-4">
                         @if (array_key_exists('images', $item['album']))
-                            <img class='rounded-full h-28 w-28 object-cover object-center'src="{{ $item['album']['images'][2]["url"]}}"><br>
+                            <img class='rounded-full h-24 w-24 object-cover object-center'src="{{ $item['album']['images'][2]["url"]}}"><br>
                         @endif
                         <div>
                             <p class="text-xl text-gray-700 font-normal mb-1">{{ $item['name']}}</p>
