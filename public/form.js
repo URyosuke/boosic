@@ -1,6 +1,5 @@
 const detail = document.querySelector('#formDetail')
 
-console.log(detail)
 
 function addClassOnResize() {
     

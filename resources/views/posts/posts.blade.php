@@ -80,3 +80,5 @@
     </div>
 </div>
 {{ $posts->links() }}
+
+<script src="../posts.js"></script>

@@ -18,7 +18,7 @@
                 <hr class="h-px bg-gray-500 border-0">
                 <div id="articleContent" class="grid grid-cols-3 pb-2">
                     <a href="{{ route('posts.show', $post) }}" class="flex justify-center col-span-1 mt-2">
-                        <img alt="Placeholder" class="pl-4 block w-96 left-1/2" src="{{ $post->book_imag_url}}">
+                        <img alt="Placeholder" class="pl-4 block left-1/2" src="{{ $post->book_imag_url}}">
                     </a>
                     <div class="top-1/2 col-span-2 text-black pl-5">
                         <div id="detail" class="grid grid-cols-2 pt-8 px-4 text-center">
@@ -73,38 +73,47 @@
                 <hr class="h-px bg-gray-500 border-0">
                 <footer class="flex items-center justify-between leading-none p-2 md:p-4">
                     <a class="flex items-center no-underline hover:underline text-black" href="{{ route('posthome', $post->user->id) }}">
-                        <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                        
+                        
+                        @if($post->user->image == null)
+                            <img id="preview" class="m-xauto w-12 h-12 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
+                        @else
+                            <img id="preview" class="mx-auto w-12 h-12 p-1 rounded-full" src="{{ asset(Auth::user()->image) }}" alt=""/>
+                        @endif
+                        
+                        
                         <p class="ml-2 text-sm">
                             {{ $post->user->name }}
                         </p>
                     </a>
                     <div class="post-control">
                         @if (!Auth::user()->is_bookmark($post->id))
-                        <form action="{{ route('bookmark.store', $post) }}" method="post">
-                            @csrf
-                            <button>お気に入り登録</button>
-                        </form>
+                            <button onclick="like({{$post->id}})" class="bg-gray-400">
+                                <span><i id="heart{{$post->id}}" class="fa-regular fa-heart fa-xl" aria-hidden="true"></i> </span>
+                                <span id="heartsNum{{ $post->id }}">{{ Auth::user()->howManyBookmarks($post->id) }}</span>
+                            </button>
                         @else
-                        <form action="{{ route('bookmark.destroy', $post) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button>お気に入り解除</button>
-                        </form>
+                            <button onclick="like({{$post->id}})" class="bg-gray-400">
+                                <span><i id="heart{{$post->id}}" class="fa-heart fa-xl fa-solid fa-heart-solid" aria-hidden="true"></i> </span>
+                                <span id="heartsNum{{ $post->id }}">{{ Auth::user()->howManyBookmarks($post->id) }}</span>
+                            </button>
                         @endif
                     </div>
                 </footer>
             </article>
             <!-- END Article -->
             <div class="flex text-white p-4">
-                <a class="pr-4" href="{{route('posts.edit',$post)}}">編集</a>
-                <form onsubmit="return confirm('本当に削除しますか？')" action="{{ route('posts.destroy', $post) }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button type="submit text-white bg-gray-700">削除</button>
-                </form>
+                @if($post->user->id == Auth::id())
+                    <a class="pr-4" href="{{route('posts.edit',$post)}}">編集</a>
+                    <form onsubmit="return confirm('本当に削除しますか？')" action="{{ route('posts.destroy', $post) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit text-white bg-gray-700">削除</button>
+                    </form> 
+                @endif
             </div>
         </div>
     <!-- END Column -->
-
 </div>
+<script src="../show.js"></script>
 @endsection

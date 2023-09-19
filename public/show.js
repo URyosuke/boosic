@@ -11,15 +11,16 @@ function addClassOnResize() {
     detailContents.classList.remove('text-left');
     detailContents.classList.add('text-center');
     detail.classList.remove('grid');
-    
+    articleContent.classList.remove('grid');
+    if(window.innerWidth > 655){
+      articleContent.classList.add('mx-16');
+    }else{
+      articleContent.classList.remove('mx-16');
+    }
   } else {
     detailContents.classList.add('text-left');
     detailContents.classList.remove('text-center');
     detail.classList.add('grid');
-  }
-  if(window.innerWidth < 655){
-    articleContent.classList.remove('grid');
-  }else{
     articleContent.classList.add('grid');
   }
 }

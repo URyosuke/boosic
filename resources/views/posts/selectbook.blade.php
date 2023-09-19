@@ -1,14 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>PHP/LaravelでGoogle books apiを使うサンプル</title>
-    </head>
-    <body>
         <h1 class="text-center text-5xl pb-8">本を選ぶ</h1>
-        <form action="{{ route('posts.selectbook') }}" method="get" class="text-center ">
+        <form action="{{ route('posts.selectbook') }}" method="get" class="text-center pb-14">
             @csrf
             <input type="text" name="keyword" size="50" value="{{ $keyword }}" class="text-black border-red-300 w-64 md:w-1/2 lg:w-1/2" placeholder=" Search">&nbsp;
             <button type="submit" class="text-white border-2 border-white">検索</button>
@@ -48,6 +41,4 @@
             
             @endforeach
         @endif
-    </body>
-</html>
 @endsection()
