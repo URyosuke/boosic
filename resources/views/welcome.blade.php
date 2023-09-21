@@ -7,7 +7,7 @@
     <title>BOOSIC-好きな小説のマイ主題歌を共有するSNS-</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="{{ asset('output.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="{{asset('main.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -89,6 +89,6 @@
     </footer>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+    <script src="{{asset('main.js')}}"></script>
 </body>
 </html>

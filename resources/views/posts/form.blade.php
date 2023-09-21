@@ -49,4 +49,4 @@
 <input type="hidden" name="music_artist" value="{{ $post->music_artist}}">
 <input type="hidden" name="music_title" value="{{ $post->music_title}}">
 <imput type="hidden" name="music_url" value="{{ $post->music_url }}">
-<script src="./../form.js"></script>
+<script src="{{asset('form.js')}}"></script>

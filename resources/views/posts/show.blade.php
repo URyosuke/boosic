@@ -115,5 +115,5 @@
         </div>
     <!-- END Column -->
 </div>
-<script src="../show.js"></script>
+<script src="{{asset('show.js')}}"></script>
 @endsection
