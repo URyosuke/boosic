@@ -81,4 +81,4 @@
 </div>
 {{ $posts->links() }}
 
-<script src="{{asset('post.js')}}"></script>
+<script src="{{asset('posts.js')}}"></script>
