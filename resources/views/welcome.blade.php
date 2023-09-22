@@ -12,7 +12,7 @@
 </head>
 <body>
     <section class="flex justify-between bg-black z-20 fixed">
-        <a href="/" class="items-center">
+        <a href="/boosic" class="items-center">
             <span class="font-serif self-center text-2xl font-semibold whitespace-nowrap text-white ml-3">BOOSIC</span>
         </a>
         <button id="apphumberger" data-collapse-toggle="navbar-hamburger" type="button" class="inline-flex items-center p-2 humbergerML text-sm text-white rounded-lg focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700" aria-controls="navbar-hamburger" aria-expanded="false">
