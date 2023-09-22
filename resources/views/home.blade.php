@@ -41,7 +41,7 @@
     <div class="flex justify-center w-full border max-w-3xl hover:shadow-none relative shadow-lg bg-gray-400">
         <div class="profile w-full m-3 ml-4 text-black">
             @if(Auth::user()->image == null)
-                <img class="w-28 h-28 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
+                <img class="w-28 h-28 p-1 rounded-full" src="{{ asset("storage/kkrn_icon_user_1.png") }}" alt=""/>
             @else
                 <img class="w-28 h-28 p-1 rounded-full" src="{{ asset(Auth::user()->image) }}" alt=""/>
             @endif
