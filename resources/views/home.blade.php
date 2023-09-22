@@ -9,7 +9,7 @@
             <form action="{{ route('profile.store',Auth::user()) }}" enctype="multipart/form-data" method="post">
                 @csrf
                 @if(Auth::user()->image == null)
-                    <img id="preview" class="mx-auto w-28 h-28 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
+                    <img id="preview" class="mx-auto w-28 h-28 p-1 rounded-full" src="{{ asset("storage/kkrn_icon_user_1.png") }}" alt=""/>
                 @else
                     <img id="preview" class="mx-auto w-28 h-28 p-1 rounded-full" src="{{ asset(Auth::user()->image) }}" alt=""/>
                 @endif
