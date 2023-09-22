@@ -21,8 +21,8 @@ class UserController extends Controller
         
         if($request->file('image') != null){
             $file_name = $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/' . $dir, $file_name);
-            $user->image = 'storage/' . $dir . '/' . $file_name;
+            $request->file('image')->storeAs('public/', $file_name);
+            $user->image = 'storage/' . $file_name;
         }
         $user->name = $data['name'];
         $user->email = $data['email'];
