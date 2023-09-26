@@ -43,5 +43,5 @@ https://boosic.xsrv.jp/boosic/<br>
     - 本の検索(Rakuten Books APIs)
     - 音楽の検索(Spotify Web API)
 - いいね機能(Ajax)
-  ![ダウンロード (1)](https://github.com/URyosuke/boosic/assets/99258388/f0467e9a-5348-46b1-9554-b92a730b3fb9)
+![ダウンロード](https://github.com/URyosuke/boosic/assets/99258388/84b179a3-30ba-47b9-b5da-706c54b60309)
 - フォロー機能(Ajax) 
