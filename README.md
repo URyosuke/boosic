@@ -29,6 +29,6 @@ https://boosic.xsrv.jp/boosic/<br>
 - Spotify Web API
 
 # ER図
-
+![スクリーンショット 2023-09-26 20 18 18](https://github.com/URyosuke/boosic/assets/99258388/f9cfdfa5-7534-449b-b918-759a4495d2af)
 
 # 機能一覧
