@@ -28,7 +28,7 @@ function follow(userId) {
           type: "POST",
         })
           .done((data) => {
-            if(data == 'follow'){
+            if(followButton.textContent == 'フォロー'){
               followButton.textContent="フォロー中"
               const followerNum = document.querySelector('#followerNum');
               followerNum.textContent=`フォロワー${data}`;
