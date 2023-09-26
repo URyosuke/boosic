@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:80'],
-            'image' => ['nullable', 'max:1024', 'mimes:jpg,jpeg,png,gif'],
+            'image' => ['nullable', 'max:3000', 'mimes:jpg,jpeg,png,gif'],
             'email' => ['required', 'email:filter,dns'],
         ];
     }

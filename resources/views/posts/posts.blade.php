@@ -50,7 +50,7 @@
                         @if($post->user->image == null)
                             <img id="preview" class="m-xauto w-12 h-12 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
                         @else
-                            <img id="preview" class="mx-auto w-12 h-12 p-1 rounded-full" src="{{ asset(Auth::user()->image) }}" alt=""/>
+                            <img id="preview" class="mx-auto w-12 h-12 p-1 rounded-full" src="{{ asset($post->user->image) }}" alt=""/>
                         @endif
                         
                         
