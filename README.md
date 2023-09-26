@@ -5,7 +5,7 @@
 
 ## ホーム画面(PC画面)
 <img width="1480" alt="スクリーンショット 2023-09-26 14 39 28" src="https://github.com/URyosuke/boosic/assets/99258388/5d3a27a8-3191-46aa-9899-898095c92298"><br>
-## ホーム画面(PC画面)
+## マイページ(スマートホン画面)
 <img width="341" alt="スクリーンショット 2023-09-26 17 23 18" src="https://github.com/URyosuke/boosic/assets/99258388/deb1ff00-fa93-4131-9494-a10f4a169525">
 
 
