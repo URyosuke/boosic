@@ -24,7 +24,7 @@ function follow(userId) {
         $.ajax({
           // これがないと419エラーが出ます
           headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
-          url: `/follow/${userId}`,
+          url: `/boosic/follow/${userId}`,
           type: "POST",
         })
           .done((data) => {
@@ -48,7 +48,7 @@ function follow(userId) {
 function like(postId) {
   $.ajax({
     headers: {"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")},
-    url: `/like/${postId}`,
+    url: `/boosic/like/${postId}`,
     type: "POST",
   })
     .done(function (data, status, xhr) {

@@ -6,9 +6,9 @@
         <img class="max-h-20 w-full opacity-80 absolute top-0" style="z-index:-1" src="https://unsplash.com/photos/h0Vxgz5tyXA/download?force=true&w=640" alt="" />
         <div class="profile w-full m-3 ml-4 text-black">
             @if($user->image == null)
-                <img id="preview" class="m-xauto w-28 h-28 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
+                <img id="preview" class="w-28 h-28 p-1 rounded-full" src="{{ asset("storage/images/kkrn_icon_user_1.png") }}" alt=""/>
             @else
-                <img id="preview" class="mx-auto w-28 h-28 p-1 rounded-full" src="{{ asset(Auth::user()->image) }}" alt=""/>
+                <img id="preview" class="w-28 h-28 p-1 rounded-full" src="{{ asset($user->image) }}" alt=""/>
             @endif
             <div class="title ml-3 font-bold flex flex-col">
                 <div class="name break-words">{{ $user->name }}</div>
