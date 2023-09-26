@@ -32,3 +32,10 @@ https://boosic.xsrv.jp/boosic/<br>
 ![スクリーンショット 2023-09-26 20 18 18](https://github.com/URyosuke/boosic/assets/99258388/f9cfdfa5-7534-449b-b918-759a4495d2af)
 
 # 機能一覧
+- ユーザー登録、ログイン機能(Fortify)
+- ユーザープロフィール変更
+- 投稿機能
+    - 本の検索(Rakuten Books APIs)
+    - 音楽の検索(Spotify Web API)
+- いいね機能(Ajax)
+- フォロー機能(Ajax) 
