@@ -12,4 +12,5 @@ CHANGELOG.md export-ignore
 
 
 
-public/* -linguist-documentation
+* -linguist-vendored
+* -linguist-documentation
