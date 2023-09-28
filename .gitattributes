@@ -12,5 +12,5 @@ CHANGELOG.md export-ignore
 
 
 
-* -linguist-vendored
-* -linguist-documentation
+/* -linguist-vendored
+/* -linguist-documentation
